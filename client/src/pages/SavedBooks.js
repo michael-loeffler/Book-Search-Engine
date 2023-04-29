@@ -37,7 +37,7 @@ const SavedBooks = () => {
   //   getUserData();
   // }, [userDataLength]);
 
-  const { loading, data } = useQuery(GET_ME);
+  const { data } = useQuery(GET_ME);
   let userData = data?.me || {};
 
   const [removeBook, { error }] = useMutation(REMOVE_BOOK);
@@ -54,7 +54,7 @@ const SavedBooks = () => {
       const response = await removeBook(bookId, token);
 
       if (!response.ok) {
-        throw new Error('something went wrong!');
+        throw new Error(error);
       }
 
       const updatedUser = await response.json();
