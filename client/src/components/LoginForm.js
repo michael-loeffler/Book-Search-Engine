@@ -31,7 +31,7 @@ const LoginForm = () => {
       const response = await loginUser(userFormData);
 
       if (!response.ok) {
-        throw new Error('something went wrong!');
+        throw new Error(error);
       }
 
       const { token, user } = await response.json();
